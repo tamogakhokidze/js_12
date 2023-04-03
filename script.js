@@ -1,4 +1,4 @@
-// fetch("https://reqres.in/api/users?page=2");
+// fetch("https://reqres.in/api/users?page=2")
 // .then( (response) => {
 //     console.log('ok');//resolve
 
@@ -60,15 +60,65 @@
 
 //promise დროს ფუქნცია ხდება ასინქრონული , ჯერ სრულდება სინქრონული და შემდეგ ასინქრონული კოდი;
 
+// console.log("start");
 
-console.log("start");
+//  let promise = new Promise((resolve, reject) => {
+// console.log(1);
 
- let promise = new Promise((resolve, reject) => {
-console.log(1);
+//  })
+//  promise.then (response => log(2));
+//  console.log('end');
+//  //start, 1, end,
 
- })
- promise.then (response => log(2));
- console.log('end');
- //start, 1, end,
+//  2 არ გამოვა, რადგან resolve არ ვიძახებ pending სტატუსი ექნება
 
-//  2 არ გამოვა, რადგან resolve არ ვიძახებ
+//საჭიროა resolve, პარამეტრის გადაცემა და ასევე then block
+
+//-------------რამოდენიმე ფუნქციის გაშვება თანმიმდევრობით
+// api1(function (result1) {
+//   api2(function (result2) {
+//     api3(function (result3) {
+//       //რენდერის ლოგიკა
+//     });
+//   });
+// });
+
+// იგივე ჩანაწერი promise სინტაქსით
+// api1
+//   .then(function (result1) {
+//     return api2();
+//   })
+//   .then(function (result2) {
+//     return api3();
+//   })
+//   .then(function (result3) {
+//     //რენდერის ლოგიკა
+//   });
+
+// function getUserCommment(commentId) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       if (commentId < 100) {
+//         resolve("Resolved Comment");
+//       } else {
+//         reject("Reject Comment");
+//       }
+//     }, 1000);
+//   });
+// }
+
+// getUserCommment(50)
+//   .then((ok) => console.log(ok))
+//   .catch((notOk) => console.log(notOk));
+
+// task 1 მოცემული ლინკიდან https://reqres.in/api/users?page=2 წამოიღეთ უსერების იმეილები და სურათები fetchით წამოღებული ინფორმაცია აამუშავეთ პრომისით;
+
+function getUsersEmails() {
+  fetch("https://reqres.in/api/users?page=2")
+    .then((response) => {
+      console.log();
+    })
+    .catch((error) => {
+      console.log();
+    });
+}
